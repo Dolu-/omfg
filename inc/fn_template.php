@@ -179,10 +179,20 @@ function apply_template($filemovie
 
   // Load the XML of the template after it has been updated above.
   $xmltemplate = simplexml_load_string($strtemplate);
+  
+  // Get dimension of the template.
+  $width  = (int) $xmltemplate->attributes()->Width;
+  $height = (int) $xmltemplate->attributes()->Height;
+
+  if ($width  == 0) $width = 1280;
+  if ($height == 0) $width = 720;
+  
+  // Create image to work with.
+  $image = imagecreatetruecolor($width, $height);
 
   // Go through each item of the template (in order of appearance)
   // and do the required process.
-  foreach($xmltemplate->Elements[0] as $itemTemplate => $itemValues)
+  foreach($xmltemplate as $itemTemplate => $itemValues)
   {
     // Read commons values.
     $x       = (int) $itemValues->attributes()->X;
@@ -195,7 +205,7 @@ function apply_template($filemovie
     $fillfr  =       $itemValues->attributes()->FillColorFrom;
     $fillto  =       $itemValues->attributes()->FillColorTo;
     $corners =       $itemValues->attributes()->Corners;
-    $source  = (string) $itemValues->attributes()->Source;
+    $source  = strtolower($itemValues->attributes()->Source);
     $data    = (string) $itemValues->attributes()->SourceData;
     // Set color to RGB.
     list($r, $g, $b) = sscanf($fill, '#%2x%2x%2x');
@@ -214,41 +224,26 @@ function apply_template($filemovie
 
     switch ($itemTemplate) {
 
-      case "Canvas" :
-        // Mandatory item.
-        // Set at the top of the template XML file
-        
-        // Create image to work with.
-        $image = imagecreatetruecolor($width, $height);
-        
-        break;
-
       case "ImageElement" :
 
-        if ($source == "Base64") {
-        
-          // Load image from base64 string.
-          $imageitem = imagecreatefromstring(base64_decode($data));
+        // Load image from base64 string or an Url.
+        if ((($source == "base64") && (($data == "") || !($imageitem = @imagecreatefromstring(base64_decode($data)))))
+         || (($source == "url")    && (($data == "") || !($imageitem = @imagecreatefromjpeg($data))))) {
+          // Fall into default values for background.
+          $source = "file";
+          $data = "xml/default_background.jpg";
+        }
           
-        } else if ($source == "Url") {
+        // Load image from a file, so we check if it exists.
+        if (($source == "file") && (!file_exists(utf8_decode($data)) || !($imageitem = @imagecreatefromjpeg($data)))) {
+          // Create empty image with black background.
+          $source = "";
+        }
         
-          // Break on empty url.
-          if ($data == "") {
-            break;
-          }
-          
-          // Load remote image.
-          $imageitem = imagecreatefromjpeg($data);
-
-        } else {
-        
-          // Load image from a file, so we check if it exists.
-          if (!file_exists(utf8_decode($data))) {
-            // Probably have to trigger some error message.
-            break;
-          }
-          $imageitem = imagecreatefromjpeg(utf8_decode($data));
-          
+        if (($source != "url") && ($source != "file") && ($source != "base64")) {
+          // Create empty image with black background.
+          $imageitem = imagecreatetruecolor($width, $height);
+          imagefill($imageitem, 0, 0, imagecolorallocate($imageitem, 20, 20, 20));
         }
         
         $imageitem_w = imagesx($imageitem);
@@ -293,7 +288,8 @@ function apply_template($filemovie
           // Create a rectangle with rounded corners.
           $rectangle = imagecreatetruecolor($width, $height);
           // Fill the rectangle with the requested color.
-          imagefilledrectangle($rectangle, 0, 0, $width, $height, imagecolorallocate($rectangle, $r, $g, $b));
+          imagefilledrectangle($rectangle, 0, 0, $width, $height,
+                               imagecolorallocate($rectangle, $r, $g, $b));
           if ($itemTemplate == "GradientElement") {
             gradient_region($rectangle, 0, 0, $width, $height, $fillfr, $fillto);
           }
@@ -332,9 +328,11 @@ function apply_template($filemovie
         $fontcolor  = $itemValues->attributes()->FontColor;
         $text       = $itemValues->attributes()->Text;
         $lineheight = (int) $itemValues->attributes()->LineHeight;
-        $texthalign = $itemValues->attributes()->TextAlign;
-        $textvalign = $itemValues->attributes()->TextVerticalAlign;
+        $texthalign = strtolower($itemValues->attributes()->TextAlign);
+        $textvalign = strtolower($itemValues->attributes()->TextVerticalAlign);
         $show3dots  = (strtolower($itemValues->attributes()->Show3Dots) != "false");
+        if ($texthalign == "") $texthalign = "right";
+        if ($textvalign == "") $textvalign = "top";
         list($r, $g, $b) = sscanf($fontcolor, '#%2x%2x%2x');
         $fontname = "ttf/".$fontname.".ttf";
         if (!file_exists($fontname)) $fontname = "./ttf/DejaVuSans.ttf";
