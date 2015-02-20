@@ -1,0 +1,51 @@
+body{
+font:62.5% "Trebuchet MS", sans-serif;
+margin:0;
+background-color:#222;
+}
+
+#btnAbout{position:absolute;z-index:9;right:5px;top:1px}
+#search_lang{position:absolute;z-index:9;right:80px;top:3px}
+
+#search_result{display:inline;font-style:italic}
+
+#imgBack{text-align:center}
+#backImg{height:98%}
+
+/* Style for popup box on Ajax calls */
+#search_loading{
+display:none;
+position:fixed;
+margin:0;
+left:0;
+top:0;
+width:100%;
+height:100%;
+text-align:center;
+color:white;
+font-size:14pt;
+background-image:url("img/back_2x2.png");
+}
+#search_loading div{
+background-color:#333;
+margin-top:100px;
+padding-top:30px;
+padding-bottom:30px;
+margin-left:35%;
+margin-right:35%;
+}
+
+/* Style for search result items. */
+.result_item{float:left;text-align:center;position:relative;width:160px;height:215px;margin-left:10px;margin-top:5px;cursor:pointer;border:1px #555 solid;border-radius:10px;-moz-border-radius: 15px;background:#222}
+.result_item:hover{border:1px #26b3f7 solid;background:#003147}
+.result_item_link{text-decoration:none}
+.result_item_text{width:100%;height:30px;margin-top:2px;overflow:hidden;font-style:normal;color:#26b3f7}
+.result_item_year{font-style:italic;font-size:80%;position:absolute;top:20px;right:2px}
+
+/* Style for selected item. */
+.ui-selected{background:#F39814}
+#back_selection_content{width:100%;height:130px;overflow:auto}
+#back_selection{width:10px;height:100px}
+#back_selection img{margin:1px;padding:2px;width:178px}
+#cover_selection{float:left;text-align:center;margin-right:10px;width:160px;height:300px}
+#cover_selection_list img{margin:1px;padding:2px;width:38px}

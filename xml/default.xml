@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<Template type="movie">
+  <Elements>
+
+    <!-- TODO : As the canvas tag is mandatory, it could be moved as attributes for the template tag above. -->
+    <!-- Canvas global properties. -->
+    <Canvas Width="1280" Height="720" />
+
+    <!-- TODO : merge the two tags bellow into only one should be more efficient. -->
+    <!-- Default background image. -->
+    <ImageElement X="0" Y="0" Width="1280" Height="720" Source="File" SourceData="xml/default_background.jpg" Opacity="100" />
+    <!-- Personalized background image. -->
+    <ImageElement X="0" Y="0" Width="1280" Height="720" Source="Url" SourceData="%FANART%" Opacity="100" />
+
+    <!-- Upper gradient rectangle for movie details, will contain title, year and country. -->
+    <GradientElement X="47" Y="198" Width="864" Height="95" Radius="14" Corners="TopLeft" Opacity="50" FillColorFrom="#0000FF" FillColorTo="#080808" />
+    <!-- Lower gradient rectangle for movie details, will contain all other details. -->
+    <RectangleElement X="47" Y="293" Width="864" Height="313" Radius="14" Corners="BottomLeft" Opacity="50" FillColor="#080808" />
+
+    <!-- Background for cover. -->
+    <RectangleElement X="915" Y="199" Width="310" Height="406" Radius="14" Corners="Right" Opacity="50" FillColor="#FFFFFF" />
+    <!-- Cover image. -->
+    <ImageElement X="920" Y="202" Width="300" Height="400" Source="Url" SourceData="%COVER%" Radius="12" Corners="Right" Opacity="100" />
+
+    <!-- Original title. -->
+    <TextElement X="95" Y="270" Width="610" Height="30" LineHeight="28" FontName="FreeSansOblique" FontSize="18" FontColor="#EECC1F" Text="&quot;%ORIGINALTITLE%&quot;" TextAlign="right" TextVerticalAlign="top" />
+
+    <!-- Title. -->
+    <TextElement X="60" Y="210" Width="690" Height="72" LineHeight="28" FontName="FreeSans" FontSize="25" FontColor="#FFFFFF" Text="%TITLE%" TextAlign="left" TextVerticalAlign="top" />
+
+    <!-- Year. -->
+    <TextElement X="760" Y="207" Width="140" Height="30" LineHeight="28" FontName="FreeSans" FontSize="22" FontColor="#FFFFFF" Text="%YEAR%" TextAlign="right" TextVerticalAlign="top" />
+
+    <!-- Countries. -->
+    <TextElement X="740" Y="235" Width="160" Height="48" LineHeight="20" FontName="FreeSans" FontSize="15" FontColor="#FFFFFF" Text="%COUNTRIES%" TextAlign="right" TextVerticalAlign="top" Show3Dots="false" />
+
+    <!-- Yellow line under title. -->
+    <RectangleElement X="55" Y="295" Width="658" Height="1" FillColor="#FFFF00" />
+
+    <!-- Summary. -->
+    <TextElement X="53" Y="299" Width="660" Height="242" LineHeight="24" FontName="FreeSans" FontSize="15" FontColor="#FFFFFF" Text="%PLOT%" TextAlign="left" TextVerticalAlign="top" />
+
+    <!-- Director label. -->
+    <TextElement X="723" Y="278" Width="180" Height="24" LineHeight="20" FontName="DejaVuSans-Bold" FontSize="12" FontColor="#FFFF00" Text="Director" TextAlign="right" TextVerticalAlign="top" />
+    <!-- Yellow line under director. -->
+    <RectangleElement X="723" Y="295" Width="180" Height="1" FillColor="#FFFF00" />
+    <!-- Director value. -->
+    <TextElement X="715" Y="300" Width="190" Height="48" LineHeight="20" FontName="FreeSans" FontSize="14" FontColor="#FFFFFF" Text="%DIRECTORS%" TextAlign="right" TextVerticalAlign="top" Show3Dots="false" />
+
+    <!-- Actors label. -->
+    <TextElement X="723" Y="352" Width="180" Height="24" LineHeight="20" FontName="DejaVuSans-Bold" FontSize="12" FontColor="#FFFF00" Text="Cast" TextAlign="right" TextVerticalAlign="top" />
+    <!-- Yellow line under actors. -->
+    <RectangleElement X="723" Y="370" Width="180" Height="1" FillColor="#FFFF00" />
+    <!-- Actors value. -->
+    <TextElement X="715" Y="374" Width="190" Height="125" LineHeight="19" FontName="FreeSans" FontSize="14" FontColor="#FFFFFF" Text="%ACTORS%" TextAlign="right" TextVerticalAlign="top" Show3Dots="false" />
+
+    <!-- Genres label. -->
+    <TextElement X="723" Y="506" Width="180" Height="24" LineHeight="20" FontName="DejaVuSans-Bold" FontSize="12" FontColor="#FFFF00" Text="Genre" TextAlign="right" TextVerticalAlign="top" />
+    <!-- Yellow line under genres. -->
+    <RectangleElement X="723" Y="524" Width="180" Height="1" FillColor="#FFFF00" />
+    <!-- Genres value. -->
+    <TextElement X="710" Y="528" Width="195" Height="76" LineHeight="18" FontName="FreeSans" FontSize="14" FontColor="#FFFFFF" Text="%GENRES%" TextAlign="right" TextVerticalAlign="top" Show3Dots="false" />
+
+    <!-- Runtime label. -->
+    <TextElement X="85" Y="546" Width="120" Height="24" LineHeight="20" FontName="DejaVuSans-Bold" FontSize="12" FontColor="#FFFF00" Text="Runtime" TextAlign="right" TextVerticalAlign="top" />
+    <!-- Yellow line under runtime. -->
+    <RectangleElement X="85" Y="564" Width="120" Height="1" FillColor="#FFFF00" />
+    <!-- Runtime value. -->
+    <TextElement X="85" Y="570" Width="120" Height="30" LineHeight="28" FontName="DejaVuSansCondensed-Bold" FontSize="20" FontColor="#FFFFFF" Text="%RUNTIME% min" TextAlign="right" TextVerticalAlign="middle" />
+
+    <!-- Rating label. -->
+    <TextElement X="554" Y="546" Width="132" Height="24" LineHeight="20" FontName="DejaVuSans-Bold" FontSize="12" FontColor="#FFFF00" Text="Rating" TextAlign="right" TextVerticalAlign="top" />
+    <!-- Yellow line under rating. -->
+    <RectangleElement X="554" Y="564" Width="132" Height="1" FillColor="#FFFF00" />
+    <!-- Rating value, background image. -->
+    <ImageElement X="556" Y="568" Width="127" Height="30" Source="Base64" SourceData="iVBORw0KGgoAAAANSUhEUgAAAH8AAAAeCAIAAACKd1a7AAAACXBIWXMAAAsSAAALEgHS3X78AAAFQUlEQVR42u2a+1dUVRTHj0IGhQZRCaQCJoFJ0oMIahhAwjAoApMIctRhUEBlCBpfTLwGCBmfDNnQwMRrGN4MT/GBKagIoQLq/9NZe3d3dyGmP3F/uHzWd92f9/rcfe8959zNGGOrVq1avXq1k5OTs7PzS8CaNWteBlxcXFxdXV8ReFXAzc1t7dq169atew1wd3f38PB4HfD09HwDeFPgLYH169d7eXl5e3v7+Pi8DWzYsGHjxo2bNm3y9fXFq5+fn7+/P143b978DrBly5aAgIB3gcDAwKCgoK1bt+L1PWAbEBwc/L7A9u3bQ0JCPgA+Aj4GQkNDPxEICwv7FAgPD4+IiPgM+BxQKBSRgFKpjBKIjo6OiYnZAcTGxn4hEBcXt3Pnzi+BeGDXrl1fAQkJCYmJiV8D3wBJSUnfAsnJycwZIOOoG40vck263QHU7SlAukk0xxvwAcg16UbXJBoh16g7EBCLRtfBgFg0uv4QQNehwLNE4/X/RaNrFM0Vk2h0jZZJdKIAik4C0DKSkpKyG/gO2LNnDyPXT+sWN/WSisXtvGRHi9uZenlJxUEAKt4mIPZLilEu+UWzz21kVIx+owXEXRwnIO5iNJsAoFZ+pRZGudwpN7tbALVyUlNTvwfS0tJ+ANLT0zMyMn4E9u7dq1KpmBvAXTNWupLliVqtzszM1Gg0jLpb8prkk+zs7ByA0ctE8prkE61Wmw8wL4C/tSWvST7R6XTHjh07fvw4oy+k5DXJJ0WAXq9ntOyTvCb5pKysrLy83GAwMFplS16TfPIrUF1dzWjFLXlN8onRaDxz5szZs2cZ7nE4ktckn9QCJpOJ0a5d8prkk98Bs9nMaCsveU3yicViaWxstFqtjA6nJK9JPmlqampubm5paWHcOx5XSV6TfGKz2drb2+12O6MzWMlrkk86Ozu7u7t7enoYHdJKXpN80tvb29/f73A4GB6Lh4eHS16TfDI4ODg0NDQ8PMzoX4TkNckno6Ojly9fHhsbYxHAiv3lzNWrV69fvz4+Ps5QvUKhkLwm+eTGjRt/AYz+LEtek3xy69atiYmJyclJhn+fV+wvZ27fvn337t2pqal/ez8yMlLymuSTe/fuTU9Pz8zMMHztKJVKyWuST/4GZmdnV766EuT+/fsPHjx4+PDhf19dJRAVFRUTE0NjcjhaRENFOEuEg0Q0nIXzQzg5JJ4ZUqlU+/bt279//4EDB9RqtUajycrKOnToUDaQk5Nz+PDhI0eOHD16VKvV/gQUFBQUFhb+DOB/55MnT546dUqv1/8CFBcXl5SUlJWVGQyGioqKyspK/El0GqipqcG/FufOnTt//vzFixdra2vr6up+Ay5dumQ2m/8AGhoarFbrnwCdebW1tdlsNrvd3tHR0QngeQDfmvb19fHd6cDAAN8oDQO0Zr9y5QpfQY4DuJjhH1X+ReUv9zt37vCXO71neLOT9/n5+YWFBbZooA5HvXDISzyhGB8fjzcARxKfvgE4upWWlkb2cVyL3wCx/YMHD+IN4PZzc3PJfn5+fgGA9nU6HVd/4sQJsl8sUFpaSvarqqrE9o1GI6q/cOHCkurr6+stFgupbwJQfWtrKx5+ofquri6xeofDwdXjBnVkZITUc+/Xrl0j7zdv3sTFDKrnn9ZpANWj97m5Oe790aNHjx8/ZjR6R08ADjK+yBOAQ4rU/vwG4NRcBkD2efvj9Bba55B93v7cfl5eHrcv7n2yz9UXFRVh12PjP23/tMAi+yaTqQ54ln3Oc9XjgQydDby4euz6GYDUc0j9kydP/gHEB3k8OJIC0gAAAABJRU5ErkJggg==" Radius="3" Corners="All" Opacity="100" />
+
+    <!-- Rating value, progressbar. -->
+    <RectangleElement X="560" Y="571" Width="%RATING*12%" Height="23" FillColor="#00E000" />
+    <!-- Rating value, mask for progressbar. -->
+    <PolygonElement X1="559" Y1="572" X2="561" Y2="570" X3="678" Y3="570" X4="559" Y4="591" FillColor="#323232" />
+
+    <!-- Rating value, shadows. -->
+    <TextElement X="559" Y="572" Width="126" Height="30" LineHeight="24" FontName="DejaVuSans" FontSize="17" FontColor="#000000" Text="%RATING*10%%" TextAlign="center" TextVerticalAlign="middle" />
+    <TextElement X="559" Y="574" Width="126" Height="30" LineHeight="24" FontName="DejaVuSans" FontSize="17" FontColor="#000000" Text="%RATING*10%%" TextAlign="center" TextVerticalAlign="middle" />
+    <TextElement X="561" Y="572" Width="126" Height="30" LineHeight="24" FontName="DejaVuSans" FontSize="17" FontColor="#000000" Text="%RATING*10%%" TextAlign="center" TextVerticalAlign="middle" />
+    <TextElement X="561" Y="574" Width="126" Height="30" LineHeight="24" FontName="DejaVuSans" FontSize="17" FontColor="#000000" Text="%RATING*10%%" TextAlign="center" TextVerticalAlign="middle" />
+    
+    <!-- Rating value in %. -->
+    <TextElement X="560" Y="573" Width="126" Height="30" LineHeight="24" FontName="DejaVuSans" FontSize="17" FontColor="#FFFFFF" Text="%RATING*10%%" TextAlign="center" TextVerticalAlign="middle" />
+
+  </Elements>
+
+</Template>

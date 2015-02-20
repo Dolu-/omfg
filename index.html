@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Online Movie Fanart Generator</title>
+  
+  <meta name="author" content="Ludovic Lefebvre">
+  <meta name="description" content="A simple online tool to generate personalized backgrounds of your favorite movies for your networked multimedia tank.">
+  
+  <link href="http://code.jquery.com/ui/1.11.2/themes/dark-hive/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+  <link href="omfg.css" rel="stylesheet">
+  
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+  <script src="omfg.js"></script>
+</head>
+<body>
+
+<!-- About button is displayed over the accordion widget. -->
+<button id="btnAbout">About</button>
+<!-- Selection of the prefered langage. -->
+<select id="search_lang">
+  <option value="de">Deutsch</option>
+  <option value="en">English</option>
+  <option value="es">Español</option>
+  <option value="fr">Français</option>
+  <option value="it">Italiano</option>
+  <option value="pt">Português</option>
+</select>
+
+<div id="divContainer">
+  <!-- Accordion -->
+  <div id="divMain">
+    <h3>Movie Search</h3>
+    <div>
+    
+      <form>
+        <div>
+          <label for="search_title">Title : </label><input type="text" id="search_title" value="" size="50" />
+          <button id="search_submit" />Search</button>
+        </div>
+        <div id="search_result"></div>
+      </form>
+      
+      <div id="search_select">
+      </div>
+
+    </div>
+    
+    <h3>Movie Details</h3>
+    <div>
+      <!-- Backdrops/Fanart area -->
+      <div id="back_selection_content">
+        <div id="back_selection"></div>
+      </div>
+
+      <!-- Movie area -->
+      <div style="width:100%;">
+      
+        <!-- Boutons. -->
+        <div id="buttons_selection" style="float:right;">
+          <button id="btnApply">Apply</button>
+        </div>
+        
+        <!-- Covers -->
+        <div id="cover_selection">
+        </div>
+      
+        <!-- Movie details -->
+        <div id="text_selection">
+          <div class="text_search_result">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    
+    <h3>Fanart result</h3>
+    <div id="imgBack">
+      <img id="backImg" src="img/nocover.png">
+      <a id="imgDownload" href="#" download="folder.jpg" style="float:right;">Download</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- Popup box for synchronous Ajax calls. -->
+<div id="search_loading">
+  <div class="ui-corner-all shadowed"><img src="img/ajax-loader.gif" /><br /><br />
+  <span id="waiting_text">Search in progress...</span></div>
+</div>
+
+<!-- About dialog box. -->
+<div id="dialog-message" title="About Omfg">
+  <p>
+    This product uses the TMDb API but is not endorsed or certified by <a href="http://www.themoviedb.org/" target="_blank">TMDb</a>.
+    <img src="img/tmdb-logo-2.png" height="60px">
+  </p>
+  <p>
+    This product uses the following :
+    <ul>
+      <li><a href="http://jquery.com" target="_blank">jQuery</a> and <a href="http://jqueryui.com" target="_blank">jQueryUI</a></li>
+      <li><a href="https://github.com/glamorous/TMDb-PHP-API">TMDb PHP API</a></li>
+      <li><a href="http://www.sk89q.com/2008/08/ttf-textbox-in-php/" target="_blank">imagettftextboxopt</a>, a PHP function to draw wrapped text.</li>
+      <li><a href="http://www.gnu.org/software/freefont/" target="_blank">FreeFont</a></li>
+      <li><a href="http://dejavu.sourceforge.net/" target="_blank">DejaVu fonts</a></li>
+      <li>Image from <a href="http://www.ajaxload.info/" target="_blank">Ajaxload.info</a></li>
+    </ul>
+  </p>
+  <p>
+    The author of Omfg is Ludovic Lefebvre, you can contact me on "gmail.com" with "ouebfrance".
+  </p>
+</div>
+
+</body>
+</html>
