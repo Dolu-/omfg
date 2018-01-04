@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2004-2008 sk89q <http://sk89q.therisenrealm.com>
+ * Copyright (c) 2004-2008 sk89q <https://www.sk89q.com/2008/08/ttf-textbox-in-php/>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
