@@ -125,7 +125,7 @@ function imagettftextboxopt(&$image, $size, $angle, $left, $top, $color, $fontfi
         
         // Iterate through all the words
         for ($w = 0; $w <= count($words); $w++) {
-            $test_word = $words[$w];
+            $test_word = isset($words[$w])?$words[$w]:'';
             $test_buffer = $buffer.($buffer == "" ? "" : " ").$test_word;
             
             $bbox = imagettfbbox($size, 0, $fontfile, $test_buffer);
